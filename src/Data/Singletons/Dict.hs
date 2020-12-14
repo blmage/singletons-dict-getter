@@ -257,8 +257,8 @@ isInstance' className
 
 infoValueLabel :: Info -> String
 infoValueLabel = \case
-    ClassI (ClassD _ _ [_] _ _) _ -> "single-parameter type class"
-    ClassOpI _ _ _                -> "type class method"
+    ClassI _ _       -> "type class"
+    ClassOpI _ _ _   -> "type class method"
     DataConI _ _ _   -> "data constructor"
     FamilyI _ _      -> "type or data family"
     PatSynI _ _      -> "pattern synonym"
