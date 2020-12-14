@@ -1,15 +1,17 @@
-{-# LANGUAGE DataKinds            #-}
-{-# LANGUAGE EmptyCase            #-}
-{-# LANGUAGE GADTs                #-}
-{-# LANGUAGE InstanceSigs         #-}
-{-# LANGUAGE KindSignatures       #-}
-{-# LANGUAGE LambdaCase           #-}
-{-# LANGUAGE PolyKinds            #-}
-{-# LANGUAGE ScopedTypeVariables  #-}
-{-# LANGUAGE TemplateHaskell      #-}
-{-# LANGUAGE TypeApplications     #-}
-{-# LANGUAGE TypeFamilies         #-}
-{-# LANGUAGE UndecidableInstances #-}
+{-# LANGUAGE DataKinds                #-}
+{-# LANGUAGE EmptyCase                #-}
+{-# LANGUAGE GADTs                    #-}
+{-# LANGUAGE InstanceSigs             #-}
+{-# LANGUAGE KindSignatures           #-}
+{-# LANGUAGE LambdaCase               #-}
+{-# LANGUAGE PolyKinds                #-}
+{-# LANGUAGE ScopedTypeVariables      #-}
+{-# LANGUAGE StandaloneDeriving       #-}
+{-# LANGUAGE StandaloneKindSignatures #-}
+{-# LANGUAGE TemplateHaskell          #-}
+{-# LANGUAGE TypeApplications         #-}
+{-# LANGUAGE TypeFamilies             #-}
+{-# LANGUAGE UndecidableInstances     #-}
 
 module Main where
 
