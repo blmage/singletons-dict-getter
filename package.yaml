@@ -1,0 +1,40 @@
+name:                singletons-dict-getter
+version:             1.0.0
+github:              "blmage/singletons-dict-getter"
+license:             MIT
+author:              "Benoît Leulliette"
+maintainer:          "benoit.leulliette@gmail.com"
+copyright:           "2020 Benoît Leulliette"
+    
+extra-source-files:
+- README.md
+
+category:            Data
+synopsis: |
+  TH generation of Dict getters for promoted nullary data constructors.
+description: |
+  TH generation of Dict getters for promoted nullary data constructors,
+  based on the corresponding singletons-like types.
+
+dependencies:
+- base >= 4.7 && < 5
+- constraints
+- template-haskell
+
+library:
+  source-dirs: src
+
+tests:
+  singletons-dict-getter-test:
+    main:                Main.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - singletons
+    - singletons-dict-getter
+    - tasty
+    - tasty-hspec
+    - typerep-map

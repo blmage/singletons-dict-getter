@@ -1,0 +1,7 @@
+resolver: lts-16.24
+packages:
+- '.'
+flags: {}
+extra-package-dbs: []
+ghc-options:
+  "$locals": -fwrite-ide-info
