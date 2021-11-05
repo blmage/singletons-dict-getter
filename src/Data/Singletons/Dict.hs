@@ -1,3 +1,4 @@
+{-# LANGUAGE CPP             #-}
 {-# LANGUAGE LambdaCase      #-}
 {-# LANGUAGE RankNTypes      #-}
 {-# LANGUAGE TemplateHaskell #-}
@@ -77,7 +78,11 @@ mkTotalDictGetter
     -- ^ The 'Name' of a type class.
     -> Q [Dec]
 mkTotalDictGetter singTypeName className = reify singTypeName >>= \case
-    TyConI (DataD [] _ [ KindedTV _ (ConT baseTypeName) ] Nothing cons []) -> do
+#if MIN_VERSION_template_haskell(2,17,0)
+    TyConI (DataD [] _ [ KindedTV _ _ (ConT baseTypeName) ] Nothing cons []) -> do
+#else
+    TyConI (DataD [] _ [ KindedTV _   (ConT baseTypeName) ] Nothing cons []) -> do
+#endif
         checkSingleParamClassName className
         (conSingNames, conTypes) <- unzip <$> traverse singConData cons
         traverse_ checkConTypeInstance conTypes
@@ -182,7 +187,11 @@ mkPartialDictGetter
     -- ^ The 'Name' of a type class.
     -> Q [Dec]
 mkPartialDictGetter singTypeName className = reify singTypeName >>= \case
-    TyConI (DataD [] _ [ KindedTV _ (ConT baseTypeName) ] Nothing cons []) -> do
+#if MIN_VERSION_template_haskell(2,17,0)
+    TyConI (DataD [] _ [ KindedTV _ _ (ConT baseTypeName) ] Nothing cons []) -> do
+#else
+    TyConI (DataD [] _ [ KindedTV _   (ConT baseTypeName) ] Nothing cons []) -> do
+#endif
         checkSingleParamClassName className
         cons' <- traverse singConData cons >>= partitionM (isInstance' className . snd)
 
